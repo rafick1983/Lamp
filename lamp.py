@@ -64,7 +64,7 @@ class LampIOStream(tornado.iostream.IOStream):
     def __init__(self, addr, reconnect, read_timeout=None):
         '''
         tuple addr is (host, port)
-        bool reconnect means the stream has to reconnect when lose connection
+        bool reconnect means the stream has to be reconnected when lose connection
         float read_timeout - timeout on each read iteration.
         '''
         tornado.iostream.IOStream.__init__(self, socket.socket())
@@ -123,7 +123,7 @@ class LampIOStream(tornado.iostream.IOStream):
         self.read_bytes(num_bytes, handle_done, handle_data)
 
 if __name__ == '__main__':
-    define('addr', '127.0.0.1:9999', help='Must look like as host:port', metavar='remote host address')
+    define('addr', '127.0.0.1:9999', help='Must look like host:port', metavar='remote host address')
     options.parse_command_line()
     sp = options.addr.split(':')
     if len(sp) == 2 and sp[1].isdigit():
